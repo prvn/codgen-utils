@@ -1,5 +1,15 @@
 package main
 
+/*
+A simple utility command to show how to use loader package in golang
+and parse Golang code in Golang.
+
+This utility mainly has code for
+- finding implementations of a interface
+- listing functions of a interface
+- parsing function params and results
+- adding proper imports used my implementations
+*/
 import (
 	"flag"
 	"fmt"
