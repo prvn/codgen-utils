@@ -358,15 +358,7 @@ func getZeroValueString(typ types.Type) string {
 		case types.String:
 			return `""`
 		}
-	case *types.Array:
-		return "nil"
-	case *types.Slice:
-		return "nil"
-	case *types.Chan:
-		return "nil"
-	case *types.Interface:
-		return "nil"
-	case *types.Map:
+	case *types.Array, *types.Slice, *types.Chan, *types.Interface, *types.Map, *types.Pointer:
 		return "nil"
 	case *types.Named:
 		if typ.(*types.Named).String() == "error" {
@@ -374,8 +366,6 @@ func getZeroValueString(typ types.Type) string {
 		}
 		_, importType, name := splitTypeAndName(typ.(*types.Named))
 		return fmt.Sprintf("%s.%s{}", importType, name)
-	case *types.Pointer:
-		return "nil"
 	}
 	return ""
 }
